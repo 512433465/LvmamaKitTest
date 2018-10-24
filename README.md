@@ -8,11 +8,11 @@
  - View里控件都定位不到  
  - 控件随机变化（如支付密码键）
 密码键盘每次页面打开或者页面刷新键位都不一样
-![](https://github.com/512433465/LvmamaKitTest/tree/master/src/main/java/com/lvmama/cn/image/mima.png)
+![Image text](/src/main/java/com/lvmama/cn/image/mima.png)
 
  - 常规定位方式无法识别
 智能货架，经常变换的显示位置
-![](/uploads/photo/2018/219fbfeb-6d8d-4c00-9345-bea785b58a9a.png!large)
+![Image text](/src/main/java/com/lvmama/cn/image/lv2.png)
  
 #### 常规解决方式
  - 坐标大法：但是坐标大法对于有些随机变化密码键就无法操作了。
@@ -25,28 +25,38 @@
 
 #### 具体实现
 
+
 1. 截取图
   1. 滑动到非原生控件，使元素可见
   2. 截取截目画面即为原图像
   3. 用画图工具打开原图像（不要人为放大或者缩小原图像），截取非原生控件的图像即为模板图像
-  4. 原图像： ![](/uploads/photo/2018/682b6abc-b31a-4546-b1c4-cd071be6c33d.png!large)
-  5. 如下用画图工具打开，保证分别率不变下截取目标图像作为模板图像 ![](/uploads/photo/2018/6bbbac76-74f5-4574-aac7-f0f02bffbc1c.png!large)
-  6.  模板图像（非原生控件图像）  ![](/uploads/photo/2018/667f744d-4468-475c-8e86-dbfc501b3768.png!large)
+  4. 原图像： ![Image text](/src/main/java/com/lvmama/cn/image/lvmmhomepage.png)
+  5. 如下用画图工具打开，保证分别率不变下截取目标图像作为模板图像 ![Image text](/src/main/java/com/lvmama/cn/image/lvxiaodai.png)
+  6.  模板图像（非原生控件图像）  
+
 
 
 2. 取坐标
   1. 执行OpenCV函数 matchTemplate获取坐标
   2. 为方便公司同事和社区伸手党使用，直接上码 **[LvmamaKit代码工程Git传送门](https://github.com/512433465/LvmamaKitTest)**，调用LvmamaKit.find2BElementPoint4Debug会在原图像上标识出是否匹配成功
   3. 第二步成功后，调用LvmamaKit.find2BElementPoint返回Json格式坐标
-  4.  回显示意图，忽略图片失真 ![](/uploads/photo/2018/a198f808-781b-49f1-91e5-3ab35f4ff11e.png!large)
-  5.返回坐标，自行计算出中心坐标 {"x":"309","y":"854","width":"105","height":"82"} ![](/uploads/photo/2018/87245630-9a40-4614-9fbb-a3abf23097c1.png!large)
+  
+  4.  回显示意图，忽略图片失真 ![Image text](/src/main/java/com/lvmama/cn/image/imagee.png)
+  
+  5.  调用LvmamaKit.find2BElementPoint返回Json格式坐标，自行计算出中心坐标 {"x":"309","y":"854","width":"105","height":"82"} 
+
+
 
 3. 点坐标
   1. 拷贝返回的坐标，进行相对计算
   2. 点击相对坐标，完成你的自动化用例
 
+
+
 4. 识别密码
   1.密码键盘，1-9随机变，图像识别妥妥的搞定。 示意图 ![](/uploads/photo/2018/895b9e52-4530-476a-9261-b8e97b114f8c.png!large)
+
+
 
 5. 搞定收工
   1. 明天可以给妹子解决非原生控件的定位问题咯
